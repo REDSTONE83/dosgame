@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.view {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.splash {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  .logo {
+    padding: 0 24px;
+    max-width: 100%;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .menu {
+    margin-top: 24px;
+  }
+}
+
+.menu {
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 2px #000,
+    inset 0 0 0 4px #D34100,
+    inset 0 0 0 6px #F3A261,
+    inset 0 0 0 8px #000000,
+    inset 0 0 0 10px #D34100,
+    inset 0 0 0 12px #00A261,
+    inset 0 0 0 14px #D34100,
+    inset 0 0 0 16px #F3E3D3;
+  background: #F3E3D3;
+  padding: 24px;
+  .corner {
+    position: absolute;
+    background: url(./assets/corner.png) no-repeat;
+    background-size: 32px 32px;
+    background-color: #000;
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+  }
+  .corner-tl {
+    top: 0;
+    left: 0;
+  }
+  .corner-tr {
+    top: 0;
+    right: 0;
+    background-position: -16px 0;
+  }
+  .corner-bl {
+    bottom: 0;
+    left: 0;
+    background-position: 0 -16px;
+  }
+  .corner-br {
+    bottom: 0;
+    right: 0;
+    background-position: -16px -16px;
+  }
+  .menu-item {
+    cursor: pointer;
+    display: block;
+    padding: 4px 6px;
+  }
+  .menu-item:hover {
+    background: #000;
+    color: #F3E3D3
+  }
+}
+
+.game {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  .tools {
+    display: flex;
+    flex: 0 0 40px;
+    padding: 24px 4px 4px;
+    background: #161616;
+    justify-content: space-between;
+    .top,
+    .bottom {
+      display: flex;
+    }
+  }
+  .tool-item {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+    svg {
+      fill: #fff;
+    }
+  }
+  .tool-item.disabled {
+    svg {
+      fill: #777;
+    }
+  }
+  .screen {
+    flex: 1 1 auto;
+  }
+}
+
+.dosbox-container {
+  width: 100%;
+  height: 100%;
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  canvas {
+    width: var(--screen-width);
+    height: var(--screen-height);
+    image-rendering: auto !important;
+  }
+  .canvas {
+    width: var(--screen-width);
+    height: var(--screen-height);
+    background: #333;
+    height: 0;
+    padding-top: 66.66666%
+  }
+  .canvas-container,
+  .event-blocker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .keyboard {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    user-select: none;
+    .line {
+      display: flex;
+    }
+    .key {
+      position: relative;
+      box-sizing: border-box;
+      margin: 2px;
+      border-radius: 4px;
+      width: 44px;
+      height: 44px;
+      color: #fff;
+      background: rgba(0, 0, 0, .375);
+      &.active,
+      &:active {
+        background: rgba(80, 80, 80, .375);
+      }
+    }
+    .label {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      font-size: 12px;
+      .or {
+        font-size: 75%;
+        color: rgba(255, 255, 255, .375);
+      }
+    }
+    .description {
+      display: none;
+    }
+    .description {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, .625);
+    }
+    .key-row-2 {
+      height: 92px;
+    }
+    .key-row-3 {
+      height: 140px;
+    }
+    .key-col-2 {
+      width: 92px;
+    }
+    .key-col-3 {
+      width: 140px;
+    }
+  }
+}
+
+
+
+.message {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background: rgba(255, 255, 255, .75);
+  pointer-events: none;
+}
+
+.fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+.version {
+  pointer-events: none;
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  color: #333;
+  font-size: 14px;
+}
+
+.github {
+  position: absolute;
+  display: flex;
+  right: 6px;
+  top: 4px;
+  color: #777;
+  font-size: 12px;
+  align-items: center;
+  svg {
+    width: 14px;
+    fill: #777;
+  }
+  span {
+    margin-left: 4px;
+  }
+}
+
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+  .game {
+    flex-flow: row;
+  }
+  .screen {
+    .keyboard {
+      .key {
+        width: 60px;
+        height: 60px;
+        .label {
+          font-size: 14px;
+        }
+        .description {
+          display: block;
+        }
+      }
+      .key-row-2 {
+        height: 124px;
+      }
+      .key-row-3 {
+        height: 188px;
+      }
+      .key-col-2 {
+        width: 124px;
+      }
+      .key-col-3 {
+        width: 188px;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+}
+
+@media (orientation: landscape) {
+  .game {
+    flex-flow: row;
+    .tools {
+      flex-flow: column;
+    }
+    .top,
+    .bottom {
+      flex-flow: column;
+    }
+  }
+}
