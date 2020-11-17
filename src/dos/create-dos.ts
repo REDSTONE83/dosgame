@@ -11,7 +11,7 @@ export function createDos(canvas: HTMLCanvasElement): Promise<DosRuntime> {
   return new Promise((resolve) => {
     Dos(canvas, {
       wdosboxUrl: '/static/wdosbox.js',
-      cycles: 10000,
+      cycles: 20000,
       autolock: true
     }).ready((fs, main) => resolve({ fs, main }))
   })
